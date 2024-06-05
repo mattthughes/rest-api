@@ -14,11 +14,16 @@ class ProfileList(generics.ListAPIView):
     queryset = Profile.objects.annotate(
         posts_count=Count('owner__post', distinct=True),
         followers_count=Count('owner__followed', distinct=True),
-        following_count=Count('owner__following', distinct=True)).order_by('-created_at')
+        following_count=Count('owner__following', distinct=True)
+    ).order_by('-created_at')
     serializer_class = ProfileSerializer
     filter_backends = [
         filters.OrderingFilter,
-        DjangoFilterBackend
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__following__followed__profile',
+        'owner__followed__owner__profile',
     ]
     ordering_fields = [
         'posts_count',
@@ -27,10 +32,7 @@ class ProfileList(generics.ListAPIView):
         'owner__following__created_at',
         'owner__followed__created_at',
     ]
-    filterset_fields = [
-        'owner__following__followed__profile',
-        'owner__followed__owner__profile'
-    ]
+
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
@@ -40,6 +42,6 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
     queryset = Profile.objects.annotate(
         posts_count=Count('owner__post', distinct=True),
         followers_count=Count('owner__followed', distinct=True),
-        following_count=Count('owner__following', distinct=True)).order_by('-created_at')
-
+        following_count=Count('owner__following', distinct=True)
+    ).order_by('-created_at')
     serializer_class = ProfileSerializer
