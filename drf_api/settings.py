@@ -77,7 +77,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
