@@ -66,7 +66,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = ['8000-mattthughes-restapi-6hg9aub1n2z.ws-eu114.gitpod.io', 'restt-framework-api.herokuapp.com']
 
-
+ 
 # Application definition
 
 INSTALLED_APPS = [
