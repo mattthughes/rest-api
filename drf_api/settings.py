@@ -64,6 +64,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
+    '8000-mattthughes-restapi-6hg9aub1n2z.ws-eu114.gitpod.io'
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
@@ -187,6 +188,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-mattthughes-restapi-6hg9aub1n2z.ws-eu114.gitpod.io', 'https://*.127.0.0.1']
 
 
 # Static files (CSS, JavaScript, Images)
