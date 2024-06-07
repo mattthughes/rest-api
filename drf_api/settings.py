@@ -66,14 +66,15 @@ ALLOWED_HOSTS = [
    'localhost',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://moments-mh-c5d7075da488.herokuapp.com",
-    "http://127.0.0.1:8000",
-]
-# Add local development origin if CLIENT_ORIGIN_DEV is set
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-    dev_origin = os.environ.get('CLIENT_ORIGIN_DEV')
-    CORS_ALLOWED_ORIGINS.append(dev_origin)
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 
