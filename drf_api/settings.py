@@ -62,9 +62,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-    os.environ.get('ALLOWED_HOST'),
-    'localhost',
-    '8000-mattthughes-restapi-6hg9aub1n2z.ws-eu114.gitpod.io'
+   os.environ.get('ALLOWED_HOST'),
+   'localhost',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
