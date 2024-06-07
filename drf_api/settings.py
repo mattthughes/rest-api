@@ -68,7 +68,6 @@ ALLOWED_HOSTS = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://moments-mh-c5d7075da488.herokuapp.com",
-    "http://localhost:5173",
     "http://127.0.0.1:8000",
 ]
 # Add local development origin if CLIENT_ORIGIN_DEV is set
